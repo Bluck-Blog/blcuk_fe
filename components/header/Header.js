@@ -37,7 +37,7 @@ export default function Header() {
         link={"/"}
       />
       <S.BtnBox isLogged={isLogged}>
-        {isLogged ? (
+        {!isLogged ? (
           <>
             <LinkTag
               title={"MY PAGE"}

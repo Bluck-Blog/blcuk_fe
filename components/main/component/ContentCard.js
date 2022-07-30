@@ -19,6 +19,8 @@ import BlackLike from "../../../styles/img/blackLike.png";
 import BlackFind from "../../../styles/img/blackFind.png";
 import BlackHate from "../../../styles/img/blackHate.png";
 
+import Test from "../../../styles/img/Asset3.png";
+
 export default function ContentCard({ item }) {
   const isDark = useRecoilValue(darkMode);
   const router = useRouter();
@@ -68,7 +70,7 @@ export default function ContentCard({ item }) {
               <Image
                 width={"14px"}
                 height={"14px"}
-                src={isDark ? WhiteLike : BlackLike}
+                src={isDark ? WhiteLike : Test}
                 alt="photo"
               />
               <S.Count>{item.like}</S.Count>
