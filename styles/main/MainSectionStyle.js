@@ -16,6 +16,11 @@ export const Menu = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  ${media.tablet``}
+  ${media.mobile`
+    flex-wrap: wrap;
+  `}
 `;
 
 export const Content = styled.div`
@@ -35,14 +40,32 @@ export const Content = styled.div`
     background-clip: padding-box;
     border: 1px solid transparet;
     border-radius: 5px;
-    /* border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px; */
   }
   &::-webkit-scrollbar-track {
-    /* background-color: grey; */
   }
 
   ${media.tablet`
     height: 72vh;
+  `}
+`;
+
+export const WriteButton = styled.button`
+  background: none;
+  border: none;
+  border: 2px solid ${(props) => props.theme.textColor};
+  width: 85px;
+  height: 30px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+
+  ${media.tablet`
+  font-size: 12px;
+  `}
+  ${media.mobile`
+  width: 80%;
+  margin: 20px auto 0 auto;
+  font-size: 10px;
   `}
 `;

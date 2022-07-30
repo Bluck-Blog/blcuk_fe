@@ -33,8 +33,9 @@ export default function MainSection({ content }) {
         <S.SelectBoxWrapper>
           <SelectBox list={filterList1} />
           <SelectBox list={filterList2} />
+          <SearchBox />
         </S.SelectBoxWrapper>
-        <SearchBox />
+        <S.WriteButton>글쓰기</S.WriteButton>
       </S.Menu>
       <S.Content>
         {contentList.length > 0 &&

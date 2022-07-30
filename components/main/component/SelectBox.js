@@ -30,7 +30,7 @@ export default function SelectBox({ list }) {
       isShow={isShowFilter}
       onClick={() => setIsShowFilter((prev) => !prev)}
     >
-      {filter} <Image width="12px" src={Arrow} alt="arrow" />
+      {filter} <Image width="10px" src={Arrow} alt="arrow" />
       <ul>
         {filterList.length > 0 &&
           filterList.map((item, index) => (

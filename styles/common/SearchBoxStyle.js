@@ -3,12 +3,11 @@ import { media } from "./media";
 
 export const Wrapper = styled.form`
   position: relative;
-  width: 16vw;
-  height: 30px;
+  width: 12vw;
+  height: 20px;
   border-radius: 10px;
   background: ${(props) => props.theme.bgColor};
   float: right;
-  margin-bottom: 15px;
 
   ${media.tablet`
   width: 25vw;
@@ -17,7 +16,6 @@ export const Wrapper = styled.form`
   ${media.mobile`
   width: 50vw;
   height: 20px;
-  margin-bottom: 0px;
   `}
 `;
 
