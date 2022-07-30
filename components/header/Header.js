@@ -22,10 +22,6 @@ export default function Header() {
   const [isLogged, setIsLogged] = useRecoilState(loginState);
   const isDark = useRecoilValue(darkMode);
 
-  const [isAlarmModal, setIsAlarmModal] = useState(false);
-  const [isLoginModal, setIsLoginModal] = useState(false);
-  const [isLogoutModal, setIsLogoutModal] = useState(false);
-
   const logOutHandle = () => {
     sessionStorage.removeItem("accessToken");
     setIsLogged((prev) => false);
@@ -40,97 +36,49 @@ export default function Header() {
         size={30}
         link={"/"}
       />
-      <S.BtnBox>
-        {!isLogged ? (
-          <Link href={"/logout"}>
-            <a>
-              <S.IconFigure
-                onMouseEnter={() => setIsLogoutModal(true)}
-                onMouseLeave={() => setIsLogoutModal(false)}
-                size={25}
-                tabletSize={20}
-                mobileSize={15}
-              >
-                <Image
-                  style={{ cursor: "pointer" }}
-                  layout="fill"
-                  src={isDark ? WhiteLogout : BlackLogout}
-                  alt="logout"
-                />
-                {isLogoutModal && (
-                  <S.Modal isShow={isLogoutModal}>
-                    <S.LogoutButton
-                      onClick={logOutHandle}
-                      tabletSize={14}
-                      mobileSize={10}
-                      size={14}
-                    >
-                      logout
-                    </S.LogoutButton>
-                    <LinkTag
-                      title={"mypage"}
-                      tabletSize={14}
-                      mobileSize={10}
-                      size={14}
-                      link={"/mypage"}
-                    />
-                  </S.Modal>
-                )}
-              </S.IconFigure>
-            </a>
-          </Link>
+      <S.BtnBox isLogged={isLogged}>
+        {isLogged ? (
+          <>
+            <LinkTag
+              title={"MY PAGE"}
+              tabletSize={12}
+              mobileSize={10}
+              size={12}
+              link={"/myPage"}
+            />
+            <LinkTag
+              title={"LOG-OUT"}
+              tabletSize={12}
+              mobileSize={10}
+              size={12}
+              link={"/"}
+            />
+          </>
         ) : (
-          <Link href={"/login"}>
-            <a>
-              <S.IconFigure
-                onMouseEnter={() => setIsLoginModal(true)}
-                onMouseLeave={() => setIsLoginModal(false)}
-                size={25}
-                tabletSize={20}
-                mobileSize={15}
-              >
-                <Image
-                  style={{ cursor: "pointer" }}
-                  layout="fill"
-                  src={isDark ? WhiteLogin : BlackLogin}
-                  alt="login"
-                />
-                {isLoginModal && (
-                  <S.Modal isShow={isLoginModal}>
-                    <LinkTag
-                      title={"login"}
-                      tabletSize={14}
-                      mobileSize={10}
-                      size={14}
-                      link={"/login"}
-                    />
-                    <LinkTag
-                      title={"join"}
-                      tabletSize={14}
-                      mobileSize={10}
-                      size={14}
-                      link={"/signup"}
-                    />
-                  </S.Modal>
-                )}
-              </S.IconFigure>
-            </a>
-          </Link>
+          <>
+            <LinkTag
+              title={"LOG-IN"}
+              tabletSize={12}
+              mobileSize={10}
+              size={12}
+              link={"/login"}
+            />
+            <LinkTag
+              title={"JOIN"}
+              tabletSize={12}
+              mobileSize={10}
+              size={12}
+              link={"/signUp"}
+            />
+          </>
         )}
-        <S.IconFigure
-          onMouseEnter={() => setIsAlarmModal(true)}
-          onMouseLeave={() => setIsAlarmModal(false)}
-          size={25}
-          tabletSize={20}
-          mobileSize={15}
-        >
+        <S.IconFigure size={20} tabletSize={20} mobileSize={15}>
           <Image
             style={{ cursor: "pointer" }}
             layout="fill"
             src={isDark ? WhiteBell : BlackBell}
             alt="bell"
           />
-          {isAlarmModal && <S.Modal isShow={isAlarmModal}>여기</S.Modal>}
         </S.IconFigure>
       </S.BtnBox>
     </S.HeaderWrapper>

@@ -27,17 +27,17 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const BtnBox = styled.div`
-  width: 7%;
+  width: 12%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   ${media.tablet`
-      width: 10%;  
+      width: 25%;  
   `}
 
   ${media.mobile`
-      width: 14%;  
+      width: ${(props) => (props.isLogged ? "50%" : "45%")};  
       margin-right: 2%;
   `}
 `;
