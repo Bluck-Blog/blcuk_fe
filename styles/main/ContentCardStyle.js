@@ -87,9 +87,9 @@ export const MainContent = styled.p`
   width: 95%;
   height: 30px;
   white-space: normal;
-  text-overflow: ellipsis;
   overflow: hidden;
   line-height: 1.2;
+  text-overflow: ellipsis;
   word-wrap: break-word;
   display: -webkit-box;
   -webkit-line-clamp: 2;

@@ -7,6 +7,7 @@ import * as S from "../../styles/myPage/MyPageLayoutStyle";
 
 // img
 import Profile from "../../styles/img/blackProfile.png";
+import LinkTag from "../common/LinkTag";
 
 const MyPageLayout = () => {
   return (
@@ -17,13 +18,23 @@ const MyPageLayout = () => {
         </S.MyPageProfileBox>
         <S.MyPageDescriptionBox>
           <div>
-            <span>발빠른 토깽이</span> | <span>별명 나타나는 곳</span>
+            <S.MyPageUserName>발빠른 토깽이</S.MyPageUserName> |{" "}
+            <S.MyPageUserNickName>별명 나타나는 곳</S.MyPageUserNickName>
           </div>
           <div>
-            <h3>상태 메세지</h3>
-            <p>자기소개</p>
+            <S.MyPageMessage>상태 메세지는 한줄로 나타납니다.</S.MyPageMessage>
+            <S.MyPageIntrodueText>
+              자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개
+              자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개
+            </S.MyPageIntrodueText>
           </div>
-          <a>회원 정보 변경</a>
+          <LinkTag
+            title={"회원 정보 변경"}
+            tabletSize={12}
+            mobileSize={10}
+            size={12}
+            link={"/myPage"}
+          />
         </S.MyPageDescriptionBox>
       </S.MyPageUserDataBox>
     </S.Wrapper>
