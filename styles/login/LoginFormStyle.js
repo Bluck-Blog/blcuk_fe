@@ -11,6 +11,7 @@ export const IdInput = styled.input`
   height: 50px;
   border: none;
   background: none;
+  background: ${(props) => props.theme.input};
   color: ${(props) => props.theme.textColor};
   &:focus {
     outline: none;
@@ -27,6 +28,7 @@ export const PwInput = styled.input`
   height: 50px;
   border: none;
   background: none;
+  background: ${(props) => props.theme.input};
   color: ${(props) => props.theme.textColor};
   &:focus {
     outline: none;
@@ -42,7 +44,7 @@ export const IdBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${(props) => props.theme.bgColor};
+  background: ${(props) => props.theme.input};
   border-radius: 10px;
   margin-top: 20px;
 `;

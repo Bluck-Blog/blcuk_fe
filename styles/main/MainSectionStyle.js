@@ -53,6 +53,7 @@ export const WriteButton = styled.button`
   background: none;
   border: none;
   border: 2px solid ${(props) => props.theme.textColor};
+  color: ${(props) => props.theme.textColor};
   width: 85px;
   height: 30px;
   border-radius: 15px;
