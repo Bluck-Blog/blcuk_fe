@@ -1,15 +1,46 @@
 // lib
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // styled
 import * as S from "../../../styles/myPage/MyPageTabMenuStyle";
 
 const MyPageTabMenu = () => {
   const [activeTab, setActiveTab] = useState("myText");
+  const [tagList, setTagList] = useState([]);
+
+  useEffect(() => {
+    const tagList = [
+      { id: 1, active: false, tag: "a" },
+      { id: 2, active: false, tag: "aa" },
+      { id: 3, active: false, tag: "aaa" },
+      { id: 4, active: false, tag: "aaaa" },
+      { id: 5, active: false, tag: "aaaaa" },
+      { id: 6, active: false, tag: "aaaaaaaaaaaaaa" },
+      { id: 7, active: false, tag: "aaaa" },
+      { id: 8, active: false, tag: "aa" },
+    ];
+
+    setTagList([...tagList]);
+  }, []);
 
   const onTabMenuClick = (text) => {
     setActiveTab(text);
   };
+
+  const onTagClick = (id) => {
+    const newArray = [];
+    tagList.forEach((item) => {
+      if (item.id === id) {
+        item.active = !item.active;
+      }
+      newArray.push(item);
+    });
+
+    setTagList([...newArray]);
+  };
+
+  console.log("activeTab==");
+  console.log(tagList);
 
   return (
     <S.MyPageTabWrapper>
@@ -33,7 +64,17 @@ const MyPageTabMenu = () => {
           모든 알림
         </S.MyPageTabList>
       </ul>
-      <div>카테고리</div>
+      <S.MyPageTagWrapper>
+        {tagList.map((item) => (
+          <S.MypageTag
+            key={item.id}
+            onClick={() => onTagClick(item.id)}
+            active={item.active}
+          >
+            {item.tag}
+          </S.MypageTag>
+        ))}
+      </S.MyPageTagWrapper>
     </S.MyPageTabWrapper>
   );
 };

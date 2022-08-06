@@ -20,3 +20,22 @@ export const MyPageTabList = styled.li`
   background: ${(props) => (props.active ? props.theme.textColor : "none")};
   opacity: 0.9;
 `;
+
+export const MyPageTagWrapper = styled.div`
+  width: 100%;
+  height: 45vh;
+  background-color: ${(props) => props.theme.bgColor};
+  border-radius: 20px;
+  padding: 10% 5%;
+`;
+
+export const MypageTag = styled.span`
+  display: inline-block;
+  background: ${(props) => props.theme.textColor};
+  color: white;
+  margin: 5px 5px;
+  padding: 5px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: ${(props) => (props.active ? "1" : "0.5")};
+`;
