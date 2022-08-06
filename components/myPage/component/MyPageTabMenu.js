@@ -39,9 +39,6 @@ const MyPageTabMenu = () => {
     setTagList([...newArray]);
   };
 
-  console.log("activeTab==");
-  console.log(tagList);
-
   return (
     <S.MyPageTabWrapper>
       <ul>
@@ -64,17 +61,19 @@ const MyPageTabMenu = () => {
           모든 알림
         </S.MyPageTabList>
       </ul>
-      <S.MyPageTagWrapper>
-        {tagList.map((item) => (
-          <S.MypageTag
-            key={item.id}
-            onClick={() => onTagClick(item.id)}
-            active={item.active}
-          >
-            {item.tag}
-          </S.MypageTag>
-        ))}
-      </S.MyPageTagWrapper>
+      {activeTab === "myText" && (
+        <S.MyPageTagWrapper>
+          {tagList.map((item) => (
+            <S.MypageTag
+              key={item.id}
+              onClick={() => onTagClick(item.id)}
+              active={item.active}
+            >
+              {item.tag}
+            </S.MypageTag>
+          ))}
+        </S.MyPageTagWrapper>
+      )}
     </S.MyPageTabWrapper>
   );
 };

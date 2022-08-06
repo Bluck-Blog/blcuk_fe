@@ -1,6 +1,5 @@
 {
   "extends": "next/core-web-vitals",
-  "singleQuote": true, // ' 따옴표 사용
   "semi": true, // 세미콜론 여부
   "useTabs": true, // tab 사용 여부
   "tabWidth": 4, // tab 너비
