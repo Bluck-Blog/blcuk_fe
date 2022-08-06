@@ -1,5 +1,5 @@
 // componenets
-import FindIdFormBox from "./component/FIndidFormBox";
+import FindIdFormBox from "./component/FindidFormBox";
 import * as S from "../../styles/findId/FIndIdPageStyle";
 
 // lib

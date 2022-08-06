@@ -5,7 +5,7 @@ import Image from "next/image";
 // img
 import BlackRightArrow from "../../../styles/img/blackRightArrow.png";
 import BlackLeftArrow from "../../../styles/img/blackLeftArrow.png";
-import WhiteRightArrow from "../../../styles/img/WhiteRightArrow.png";
+import WhiteRightArrow from "../../../styles/img/whiteRightArrow.png";
 import WhiteLeftArrow from "../../../styles/img/whiteLeftArrow.png";
 
 // components

@@ -14,7 +14,7 @@ import BlackLogin from "../../styles/img/blackLogin.png";
 import WhiteLogout from "../../styles/img/whiteLogout.png";
 import BlackLogout from "../../styles/img/blackLogout.png";
 import BlackBell from "../../styles/img/blackBell.png";
-import WhiteBell from "../../styles/img/WhiteBell.png";
+import WhiteBell from "../../styles/img/whiteBell.png";
 import Link from "next/link";
 import Title from "../common/Title";
 
