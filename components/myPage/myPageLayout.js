@@ -14,7 +14,7 @@ const MyPageLayout = () => {
       <MyPageUserData />
       <S.MyPageTabAndContentBox>
         <MyPageTabMenu />
-        <S.MyPageContentBox>콘첸트</S.MyPageContentBox>
+        <S.MyPageContentBox>콘텐트</S.MyPageContentBox>
       </S.MyPageTabAndContentBox>
     </S.Wrapper>
   );
