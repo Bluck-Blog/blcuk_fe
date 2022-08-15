@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { media } from "../common/media";
 
 export const Wrapper = styled.div`
-  width: 49%;
+  width: ${(props) => (props.isFull ? "49%" : "100%")};
   height: 185px;
   margin-bottom: 20px;
   border-radius: 20px;
@@ -34,7 +34,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Banner = styled.figure`
-  width: 30%;
+  width: ${(props) => (props.isFull ? "30%" : "20%")};
   height: 100%;
   position: relative;
   border-right: 1px solid #aaa;
@@ -49,7 +49,7 @@ export const Banner = styled.figure`
 `;
 
 export const Body = styled.div`
-  width: 70%;
+  width: ${(props) => (props.isFull ? "70%" : "80%")};
   height: 100%;
   padding: 0 4% 0 2%;
   background: ${(props) => props.theme.ctBgColor};
@@ -124,7 +124,7 @@ export const RightIcon = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 20px;
+  width: 30%;
 
   ${media.mobile`
     width: 60%;

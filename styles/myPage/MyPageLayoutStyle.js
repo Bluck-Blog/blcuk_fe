@@ -16,8 +16,3 @@ export const MyPageTabAndContentBox = styled.div`
   margin-top: 25px;
   height: 70%;
 `;
-
-export const MyPageContentBox = styled.div`
-  width: 80%;
-  background: blue;
-`;

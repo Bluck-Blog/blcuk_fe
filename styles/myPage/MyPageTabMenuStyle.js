@@ -23,7 +23,7 @@ export const MyPageTabList = styled.li`
 
 export const MyPageTagWrapper = styled.div`
   width: 100%;
-  height: 45vh;
+  height: 40vh;
   background-color: ${(props) => props.theme.bgColor};
   border-radius: 20px;
   padding: 10% 5%;

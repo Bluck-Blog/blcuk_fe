@@ -29,11 +29,12 @@ export default function ContentCard({ item }) {
     <S.Wrapper
       onClick={() => router.push(`/detail/${item.id}`)}
       isDark={isDark}
+      isFull={router.pathname === "myPage"}
     >
-      <S.Banner>
+      <S.Banner isFull={router.pathname === "myPage"}>
         <Image layout="fill" src={Dog} alt="photo" />
       </S.Banner>
-      <S.Body>
+      <S.Body isFull={router.pathname === "myPage"}>
         <S.ProfileBox>
           <Image
             height={"18px"}

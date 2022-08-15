@@ -4,8 +4,7 @@ import React, { useEffect, useState } from "react";
 // styled
 import * as S from "../../../styles/myPage/MyPageTabMenuStyle";
 
-const MyPageTabMenu = () => {
-  const [activeTab, setActiveTab] = useState("myText");
+const MyPageTabMenu = ({ activeTab, setActiveTab }) => {
   const [tagList, setTagList] = useState([]);
 
   useEffect(() => {
