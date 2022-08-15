@@ -3,7 +3,18 @@ import { media } from "../common/media";
 
 export const MyPageContentBox = styled.div`
   width: 80%;
-  height: 55vh;
+  padding-top: 10px;
+`;
+
+export const MyPageMyContentTitle = styled.p`
+  width: 100%;
+  border-bottom: 2px solid ${(props) => props.theme.textColor};
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+`;
+
+export const MyPageMyContentListBox = styled.div`
+  height: 50vh;
   padding-right: 1%;
   overflow-y: auto;
   display: flex;

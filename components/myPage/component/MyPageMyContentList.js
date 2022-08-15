@@ -4,12 +4,14 @@ import { content } from "../../../mok/contents";
 import ContentCard from "../../main/component/ContentCard";
 
 const MyPageMyContentList = () => {
-  console.log(content);
   return (
     <S.MyPageContentBox>
-      {content.map((item) => (
-        <ContentCard item={item} />
-      ))}
+      <S.MyPageMyContentTitle>내가 쓴 글 총 10개</S.MyPageMyContentTitle>
+      <S.MyPageMyContentListBox>
+        {content.map((item) => (
+          <ContentCard item={item} />
+        ))}
+      </S.MyPageMyContentListBox>
     </S.MyPageContentBox>
   );
 };
