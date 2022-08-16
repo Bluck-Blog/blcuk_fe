@@ -1,9 +1,6 @@
 import React from "react";
 import * as S from "../../../styles/myPage/MyPageBlackListStyle";
-
-import Close from "../../../styles/img/close.png";
-import Image from "next/image";
-import moment from "moment";
+import MyPageListItem from "./MyPageListItem";
 
 const MyPageBlackList = () => {
   const dummyBlackList = [
@@ -22,15 +19,7 @@ const MyPageBlackList = () => {
       <S.MyPageBlackListTitle>블랙리스트 총 10개</S.MyPageBlackListTitle>
       <S.MyPageBlackListBox>
         {dummyBlackList.map((item) => (
-          <S.MyPageBlackList key={item.id}>
-            <S.MyPageBlackListName>{item.name}</S.MyPageBlackListName>
-            <S.MyPageDateBox>
-              <span>{moment(item.date).format("YYYY.MM.DD")}</span>
-              <S.MyPageBlackListCloseBox>
-                <Image src={Close} alt="ex" layout="fill" />
-              </S.MyPageBlackListCloseBox>
-            </S.MyPageDateBox>
-          </S.MyPageBlackList>
+          <MyPageListItem key={item.id} item={item} />
         ))}
       </S.MyPageBlackListBox>
     </S.MyPageBlackListWrapper>

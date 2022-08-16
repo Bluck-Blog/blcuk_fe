@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import * as S from "../../../styles/myPage/MyPageMyContentListStyle";
 import { content } from "../../../mok/contents";
 import ContentCard from "../../main/component/ContentCard";
