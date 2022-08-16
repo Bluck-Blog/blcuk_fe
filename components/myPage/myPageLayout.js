@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 // styled
 import * as S from "../../styles/myPage/MyPageLayoutStyle";
+import MyPageBlackList from "./component/MyPageBlackList";
 import MyPageMyContentList from "./component/MyPageMyContentList";
 
 // component
@@ -19,6 +20,7 @@ const MyPageLayout = () => {
         <MyPageTabMenu activeTab={activeTab} setActiveTab={setActiveTab} />
 
         {activeTab === "myText" && <MyPageMyContentList />}
+        {activeTab === "blackList" && <MyPageBlackList />}
       </S.MyPageTabAndContentBox>
     </S.Wrapper>
   );

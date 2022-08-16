@@ -24,17 +24,17 @@ import Test from "../../../styles/img/Asset3.png";
 export default function ContentCard({ item }) {
   const isDark = useRecoilValue(darkMode);
   const router = useRouter();
-
+  console.log(router.pathname);
   return (
     <S.Wrapper
       onClick={() => router.push(`/detail/${item.id}`)}
       isDark={isDark}
-      isFull={router.pathname === "myPage"}
+      isFull={router.pathname === "/myPage"}
     >
-      <S.Banner isFull={router.pathname === "myPage"}>
+      <S.Banner isFull={router.pathname === "/myPage"}>
         <Image layout="fill" src={Dog} alt="photo" />
       </S.Banner>
-      <S.Body isFull={router.pathname === "myPage"}>
+      <S.Body isFull={router.pathname === "/myPage"}>
         <S.ProfileBox>
           <Image
             height={"18px"}
