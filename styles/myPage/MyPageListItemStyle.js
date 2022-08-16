@@ -6,6 +6,7 @@ export const MyPageBlackList = styled.li`
   border-radius: 10px;
   padding: 0 20px;
   background-color: ${(props) => props.theme.navBgColor};
+  opacity: ${(props) => (props.active ? "0.4" : "1")};
   display: flex;
   justify-content: space-between;
   align-items: center;

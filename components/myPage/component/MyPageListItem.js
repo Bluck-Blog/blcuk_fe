@@ -6,7 +6,7 @@ import * as S from "../../../styles/myPage/MyPageListItemStyle";
 
 const MyPageListItem = ({ item }) => {
   return (
-    <S.MyPageBlackList>
+    <S.MyPageBlackList active={item.status ?? false}>
       <S.MyPageBlackListName>{item.name}</S.MyPageBlackListName>
       <S.MyPageDateBox>
         <span>{moment(item.date).format("YYYY.MM.DD")}</span>
