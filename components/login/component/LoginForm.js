@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 //components
 import { validation } from "../../module/validation";
-import { post, POST } from "../../../pages/api/Post";
+import { POST } from "../../../pages/api/Post";
 import { darkMode, loginState } from "../../../state/atom";
 import * as S from "../../../styles/login/LoginFormStyle";
 
@@ -34,7 +34,7 @@ export default function LoginForm() {
     setError,
   } = useForm();
 
-  const afterLoginHandle = () => {
+  const afterLoginHandle = (data) => {
     const { code } = data || {};
 
     if (isSuccess && code === 0) {
@@ -75,7 +75,8 @@ export default function LoginForm() {
       password: pw,
     };
 
-    const loginAPI = await POST.useLogin(loginJson);
+    const loginAPI = await POST.login(loginJson);
+    afterLoginHandle(loginAPI);
     console.log("loginAPI===");
     console.log(loginAPI);
   };

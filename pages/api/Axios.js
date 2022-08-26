@@ -12,13 +12,13 @@ export const Axios = axios.create({
 
 Axios.interceptors.request.use(function (config) {
   const accessToken = sessionStorage.getItem("accessToken");
-  config.headers.Authorization = accessToken ? accessToken : null;
-
+  if (accessToken) {
+    config.headers.Authorization = accessToken;
+  }
   return config;
 });
 
 Axios.interceptors.response.use(function (res) {
   const { data } = res;
-
   return data;
 });

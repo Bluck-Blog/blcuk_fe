@@ -4,10 +4,13 @@
 import MainPage from "../components/main/MainPage";
 import { GET } from "./api/Get";
 import { content } from "../mok/contents";
+import { useEffect } from "react";
 
 //img
 
 export default function Home(props) {
+  useEffect(() => {}, []);
+
   return <MainPage content={props.content} />;
 }
 
