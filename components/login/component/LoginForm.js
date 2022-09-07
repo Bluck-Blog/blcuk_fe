@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 //components
 import { validation } from "../../module/validation";
-import { POST } from "../../../pages/api/Post";
+import POST from "../../../api/Post";
 import { darkMode, loginState } from "../../../state/atom";
 import * as S from "../../../styles/login/LoginFormStyle";
 
@@ -77,8 +77,6 @@ export default function LoginForm() {
 
     const loginAPI = await POST.login(loginJson);
     afterLoginHandle(loginAPI);
-    console.log("loginAPI===");
-    console.log(loginAPI);
   };
 
   useEffect(() => {

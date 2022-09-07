@@ -17,6 +17,7 @@ import BlackBell from "../../styles/img/blackBell.png";
 import WhiteBell from "../../styles/img/whiteBell.png";
 import Link from "next/link";
 import Title from "../common/Title";
+import { POST } from "../../api/Post";
 
 export default function Header() {
   const [isLogged, setIsLogged] = useRecoilState(loginState);
@@ -25,6 +26,17 @@ export default function Header() {
   const logOutHandle = () => {
     sessionStorage.removeItem("accessToken");
     setIsLogged((prev) => false);
+  };
+
+  const onLogin = async () => {
+    const request = {
+      email: process.env.NEXT_PUBLIC_EMAIL,
+      password: process.env.NEXT_PUBLIC_PASSWORD,
+    };
+    const res = await POST.login(request);
+    const accessToken = res.body.accessToken;
+    sessionStorage.setItem("accessToken", accessToken);
+    setIsLogged((prev) => true);
   };
 
   return (
@@ -36,8 +48,11 @@ export default function Header() {
         size={30}
         link={"/"}
       />
+      <p onClick={() => onLogin()} style={{ cursor: "pointer" }}>
+        test
+      </p>
       <S.BtnBox isLogged={isLogged}>
-        {!isLogged ? (
+        {isLogged ? (
           <>
             <LinkTag
               title={"MY PAGE"}

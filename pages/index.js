@@ -2,7 +2,7 @@
 
 //components
 import MainPage from "../components/main/MainPage";
-import { GET } from "./api/Get";
+import { GET } from "../api/Get";
 import { content } from "../mok/contents";
 import { useEffect } from "react";
 

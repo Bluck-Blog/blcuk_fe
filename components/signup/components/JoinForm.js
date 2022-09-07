@@ -6,8 +6,8 @@ import { useForm } from "react-hook-form";
 
 //components
 import { validation } from "../../module/validation";
-import { POST } from "../../../pages/api/Post";
-import { GET } from "../../../pages/api/Get";
+import { POST } from "../../../api/Post";
+import { GET } from "../../../api/Get";
 import { darkMode } from "../../../state/atom";
 import * as S from "../../../styles/signup/JoinFormStyle";
 
