@@ -236,7 +236,7 @@ export const IntroBox = styled.div`
 `;
 
 export const IdRememberBox = styled.div`
-  margin-top: 15px;
+  margin: 15px 0;
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -244,7 +244,7 @@ export const IdRememberBox = styled.div`
   cursor: pointer;
 
   ${media.mobile`
-  margin-top: 10px;
+  margin: 10px 0;
   `}
 `;
 

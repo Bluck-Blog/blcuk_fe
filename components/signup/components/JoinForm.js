@@ -22,6 +22,7 @@ export default function JoinForm() {
 
   // 프로필 사진
   const [profile, setProfile] = useState("");
+  const [profileFile, setProfileFile] = useState(null);
 
   // 개인정보 동의 체크
   const [check, setCheck] = useState(false);
@@ -41,11 +42,44 @@ export default function JoinForm() {
   const joinSubmit = async (data) => {
     console.log("data===");
     console.log(data);
-    console.log(errors);
-    if (getValues("password") !== getValues("passwordcheck")) {
-      console.log("asfasf");
-      setError("password", "비밀번호를 확인해주세요");
+
+    if (!check) {
+      setError("origin", { message: "개인정보 수집을 동의해주세요." });
+      return;
     }
+
+    if (!isSentAuthEmail || !isCheckAuthNumber) {
+      setError("origin", { message: "이메일 인증을 완료해주세요." });
+      return;
+    }
+
+    if (data.password !== data.passwordcheck) {
+      setError("password", { message: "비밀번호를 확인해주세요" });
+      return;
+    }
+
+    let base64;
+    if (profileFile) {
+      base64 = await fileToBase64(profileFile);
+    }
+
+    const request = {
+      birthdate: data.birthday,
+      email: data.email,
+      introduction: data.introduction,
+      name: data.name,
+      nickname: data.nickname,
+      password: data.password,
+      phone: data.phone,
+      profileImage: base64 ?? "",
+      profileMessage: data.profileMessage,
+      verifyCode: data.authNumber,
+    };
+
+    const res = await POST.register(request);
+
+    console.log("res===");
+    console.log(res);
   };
 
   const uploadProfile = (e) => {
@@ -55,6 +89,7 @@ export default function JoinForm() {
 
     const photo = files[0];
     const photoURL = URL.createObjectURL(photo);
+    setProfileFile(photo);
     setProfile(photoURL);
   };
 
@@ -274,6 +309,7 @@ export default function JoinForm() {
           </S.IdRememberImageBox>
           <S.IdRememberText>개인정보 수집 이용에 대한 동의</S.IdRememberText>
         </S.IdRememberBox>
+        <S.ErrorMsg>{errors?.origin?.message}</S.ErrorMsg>
         <S.BtnBox>
           <S.Btn>취소</S.Btn>
           <S.Btn type="submit">회원가입</S.Btn>
