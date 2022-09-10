@@ -1,8 +1,12 @@
 import { Axios } from "./Axios";
 
 export const post = async (path, body) => {
-  const data = await Axios.post(path, body);
-  return data;
+  try {
+    const data = await Axios.post(path, body);
+    return data.data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const POST = {

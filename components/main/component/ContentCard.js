@@ -24,7 +24,7 @@ import Test from "../../../styles/img/Asset3.png";
 export default function ContentCard({ item }) {
   const isDark = useRecoilValue(darkMode);
   const router = useRouter();
-  console.log(router.pathname);
+
   return (
     <S.Wrapper
       onClick={() => router.push(`/detail/${item.id}`)}

@@ -9,17 +9,22 @@ import { useEffect } from "react";
 //img
 
 export default function Home(props) {
-  useEffect(() => {}, []);
+  const aaa = async () => {
+    const data = await GET.selectAllPosts();
+    console.log(data);
+  };
 
+  useEffect(() => {
+    aaa();
+  }, []);
   return <MainPage content={props.content} />;
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const fakeData = [...content];
 
   try {
-    const data = await GET.selectAllPosts();
-
+    // const data = await GET.selectAllPosts();
     return {
       props: {
         // 나중에 data로 바꾸기

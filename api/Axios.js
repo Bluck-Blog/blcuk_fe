@@ -19,6 +19,5 @@ Axios.interceptors.request.use(function (config) {
 });
 
 Axios.interceptors.response.use(function (res) {
-  const { data } = res;
-  return data;
+  return res;
 });

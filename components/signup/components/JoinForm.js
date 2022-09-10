@@ -1,7 +1,7 @@
 // lib
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRecoilValue } from "recoil";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 //components
@@ -38,10 +38,14 @@ export default function JoinForm() {
     formState: { errors },
   } = useForm();
 
-  const joinSubmit = (data) => {
+  const joinSubmit = async (data) => {
     console.log("data===");
     console.log(data);
     console.log(errors);
+    if (getValues("password") !== getValues("passwordcheck")) {
+      console.log("asfasf");
+      setError("password", "비밀번호를 확인해주세요");
+    }
   };
 
   const uploadProfile = (e) => {
@@ -50,17 +54,11 @@ export default function JoinForm() {
     } = e;
 
     const photo = files[0];
-    const reader = new FileReader();
-    reader.onloadend = (finishEvent) => {
-      const {
-        currentTarget: { result },
-      } = finishEvent;
-      setProfile((prev) => result);
-    };
-    reader.readAsDataURL(photo);
+    const photoURL = URL.createObjectURL(photo);
+    setProfile(photoURL);
   };
 
-  const checkAuthNumberHandler = async (e) => {
+  const onCheckAuthNumberHandler = async (e) => {
     e.preventDefault();
 
     if (isCheckAuthNumber) {
@@ -68,39 +66,42 @@ export default function JoinForm() {
     }
 
     const authNumber = getValues("authNumber");
-    const formData = new FormData();
-    formData.append("code", authNumber);
-    const confirmEmailAPI = await POST.confirmEmail(formData);
+    const res = await POST.confirmEmail({ code: authNumber });
 
-    if (confirmEmailAPI.code >= 0) {
+    if (res.code >= 0) {
       setIsCheckAuthNumber(true);
       return;
     }
 
-    if (confirmEmailAPI.code < 0) {
+    if (res.code < 0) {
       setError("authNumber", { message: "인증번호가 잘못되었습니다." });
       return;
     }
   };
 
-  const sentEmail = async (e) => {
+  const onSentEmail = async (e) => {
     e.preventDefault();
+    const email = getValues("email");
+    const isValidation = validation.email.test(email);
 
     if (isSentAuthEmail) {
       return;
     }
 
-    const email = getValues("email");
-    const formData = new FormData();
-    formData.append("email", email);
-    const sentEmailAPI = await GET.sentAuthEmail(formData);
+    if (!isValidation) {
+      return;
+    }
 
-    if (sentEmailAPI.code >= 0) {
+    const res = await GET.sentAuthEmail(email);
+    console.log("res===");
+    console.log(res);
+
+    if (res.code >= 0) {
       setIsSentAuthEmail(true);
       return;
     }
 
-    if (confirmEmailAPI.code < 0) {
+    if (res.code < 0) {
       setError("email", { message: "인증번호 전송에 실패했습니다." });
       return;
     }
@@ -129,9 +130,13 @@ export default function JoinForm() {
               },
             })}
             type="text"
+            onChange={() => {
+              setIsSentAuthEmail(false);
+              setIsCheckAuthNumber(false);
+            }}
             placeholder="이메일을 입력해주세요."
           />
-          <S.ConfirmBtn onClick={sentEmail}>
+          <S.ConfirmBtn onClick={onSentEmail}>
             {isSentAuthEmail ? "전송 완료" : "인증번호 전송"}
           </S.ConfirmBtn>
         </S.InputBox>
@@ -145,7 +150,9 @@ export default function JoinForm() {
             type="text"
             placeholder="메일로 받은 인증번호 입력해주세요."
           />
-          <S.ConfirmBtn onClick={checkAuthNumberHandler}>인증확인</S.ConfirmBtn>
+          <S.ConfirmBtn onClick={onCheckAuthNumberHandler}>
+            {isCheckAuthNumber ? "인증완료" : "인증확인"}
+          </S.ConfirmBtn>
         </S.InputBox>
         <S.ErrorMsg>{errors?.authNumber?.message}</S.ErrorMsg>
         <S.InputBox>
