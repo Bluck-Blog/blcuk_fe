@@ -102,6 +102,8 @@ export default function JoinForm() {
 
     const authNumber = getValues("authNumber");
     const res = await POST.confirmEmail({ code: authNumber });
+    console.log("res==");
+    console.log(res);
 
     if (res.code >= 0) {
       setIsCheckAuthNumber(true);
@@ -124,6 +126,7 @@ export default function JoinForm() {
     }
 
     if (!isValidation) {
+      setError("email", { message: "*이메일 형식이 잘못되었습니다.*" });
       return;
     }
 
@@ -168,6 +171,7 @@ export default function JoinForm() {
             onChange={() => {
               setIsSentAuthEmail(false);
               setIsCheckAuthNumber(false);
+              setError("email", { message: "" });
             }}
             placeholder="이메일을 입력해주세요."
           />

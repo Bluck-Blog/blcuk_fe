@@ -33,7 +33,7 @@ export default function FomBox() {
           tabletSize={10}
           mobileSize={9}
           size={11}
-          link={"/signup"}
+          link={"/signUp"}
         />
       </S.FindBox>
     </S.Section>
