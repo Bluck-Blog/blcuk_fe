@@ -16,6 +16,7 @@ import Active from "../../../styles/img/activeCheck.png";
 import Check from "../../../styles/img/check.png";
 import BlackActive from "../../../styles/img/blackActiveCheck.png";
 import BlackCheck from "../../../styles/img/blackCheck.png";
+import moment from "moment/moment";
 
 export default function JoinForm() {
   const isDark = useRecoilValue(darkMode);
@@ -30,6 +31,9 @@ export default function JoinForm() {
   // 인증번호 유효성
   const [isSentAuthEmail, setIsSentAuthEmail] = useState(false);
   const [isCheckAuthNumber, setIsCheckAuthNumber] = useState(false);
+
+  // verifyCode
+  const [verifyCode, setVerifyCode] = useState("");
 
   const {
     register,
@@ -58,24 +62,37 @@ export default function JoinForm() {
       return;
     }
 
-    let base64;
-    if (profileFile) {
-      base64 = await fileToBase64(profileFile);
-    }
+    const formData = new FormData();
+
+    formData.append("birthdate", data.birthday);
+    formData.append("email", data.email);
+    formData.append("introduction", data.introduction);
+    formData.append("name", data.name);
+    formData.append("nickname", data.nickname);
+    formData.append("password", data.password);
+    formData.append("phone", data.phone);
+    formData.append("profileImage", profileFile);
+    formData.append("profileMessage", data.profileMessage);
+    formData.append("verifyCode", data.authNumber);
 
     const request = {
-      birthdate: data.birthday,
+      birthdate: moment(data.birthday).format("YYYY-MM-DD"),
       email: data.email,
       introduction: data.introduction,
       name: data.name,
       nickname: data.nickname,
       password: data.password,
       phone: data.phone,
-      profileImage: base64 ?? "",
+      profileImage:
+        "https://png.pngtree.com/png-vector/20190119/ourmid/pngtree-dummy-limb-cartoon-cartoon-limb-png-image_476981.jpg",
       profileMessage: data.profileMessage,
       verifyCode: data.authNumber,
     };
 
+    console.log("request===");
+    console.log(request);
+
+    // const res = await POST.register(formData);
     const res = await POST.register(request);
 
     console.log("res===");
@@ -101,7 +118,7 @@ export default function JoinForm() {
     }
 
     const authNumber = getValues("authNumber");
-    const res = await POST.confirmEmail({ code: authNumber });
+    const res = await POST.confirmEmail({ code: authNumber, verifyCode });
     console.log("res==");
     console.log(res);
 
@@ -131,10 +148,9 @@ export default function JoinForm() {
     }
 
     const res = await GET.sentAuthEmail(email);
-    console.log("res===");
-    console.log(res);
 
     if (res.code >= 0) {
+      setVerifyCode(res.body);
       setIsSentAuthEmail(true);
       return;
     }
@@ -188,6 +204,7 @@ export default function JoinForm() {
             })}
             type="text"
             placeholder="메일로 받은 인증번호 입력해주세요."
+            disabled={isCheckAuthNumber}
           />
           <S.ConfirmBtn onClick={onCheckAuthNumberHandler}>
             {isCheckAuthNumber ? "인증완료" : "인증확인"}
@@ -215,7 +232,7 @@ export default function JoinForm() {
                 message: "*비밀번호 형식이 잘못되었습니다.*",
               },
             })}
-            type="text"
+            type="password"
             placeholder="비밀번호를 입력해주세요."
           />
         </S.InputBox>
@@ -230,7 +247,7 @@ export default function JoinForm() {
               //   message: "*비밀번호와 다릅니다.*",
               // },
             })}
-            type="text"
+            type="password"
             placeholder="비밀번호를 다시 입력해주세요."
           />
         </S.InputBox>

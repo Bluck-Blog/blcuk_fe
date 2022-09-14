@@ -10,7 +10,8 @@ export const post = async (path, body) => {
 };
 
 export const POST = {
-  confirmEmail: ({ code }) => post(`api/session/verify?code=${code}`),
+  confirmEmail: ({ code, verifyCode }) =>
+    post(`api/session/verify?code=${code}&verifyCode=${verifyCode}`),
   login: (data) => post("api/session", data),
-  register: (data) => post("api/user", data),
+  register: (data) => post("api/users", data),
 };
