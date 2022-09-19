@@ -124,6 +124,7 @@ export default function JoinForm() {
 
     if (res.code >= 0) {
       setIsCheckAuthNumber(true);
+      sessionStorage.removeItem("cookie");
       return;
     }
 
@@ -151,6 +152,7 @@ export default function JoinForm() {
 
     if (res.code >= 0) {
       setVerifyCode(res.body);
+      sessionStorage.setItem("cookie", res.body);
       setIsSentAuthEmail(true);
       return;
     }

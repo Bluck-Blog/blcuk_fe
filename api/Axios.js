@@ -13,10 +13,14 @@ export const Axios = axios.create({
 
 Axios.interceptors.request.use(function (config) {
   const accessToken = sessionStorage.getItem("accessToken");
+  const cookie = sessionStorage.getItem("cookie");
 
-  // cookie header에 담기
   if (accessToken) {
     config.headers.Authorization = accessToken;
+  }
+
+  if (cookie) {
+    config.headers.common["Set-Cookie"] = cookie;
   }
 
   return config;
