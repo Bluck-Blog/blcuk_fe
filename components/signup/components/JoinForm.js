@@ -134,7 +134,7 @@ export default function JoinForm() {
     }
   };
 
-  const onSentEmail = async (e) => {
+  const onClickDuplicateEmail = async (e) => {
     e.preventDefault();
     const email = getValues("email");
     const isValidation = validation.email.test(email);
@@ -148,19 +148,19 @@ export default function JoinForm() {
       return;
     }
 
-    const res = await GET.sentAuthEmail(email);
+    // const res = await GET.sentAuthEmail(email);
 
-    if (res.code >= 0) {
-      setVerifyCode(res.body);
-      sessionStorage.setItem("cookie", res.body);
-      setIsSentAuthEmail(true);
-      return;
-    }
+    // if (res.code >= 0) {
+    //   setVerifyCode(res.body);
+    //   sessionStorage.setItem("cookie", res.body);
+    //   setIsSentAuthEmail(true);
+    //   return;
+    // }
 
-    if (res.code < 0) {
-      setError("email", { message: "인증번호 전송에 실패했습니다." });
-      return;
-    }
+    // if (res.code < 0) {
+    //   setError("email", { message: "인증번호 전송에 실패했습니다." });
+    //   return;
+    // }
   };
 
   return (
@@ -193,12 +193,12 @@ export default function JoinForm() {
             }}
             placeholder="이메일을 입력해주세요."
           />
-          <S.ConfirmBtn onClick={onSentEmail}>
-            {isSentAuthEmail ? "전송 완료" : "인증번호 전송"}
+          <S.ConfirmBtn onClick={onClickDuplicateEmail}>
+            {isSentAuthEmail ? "확인완료" : "중복확인"}
           </S.ConfirmBtn>
         </S.InputBox>
         <S.ErrorMsg>{errors?.email?.message}</S.ErrorMsg>
-        <S.InputBox>
+        {/* <S.InputBox>
           <S.Label>인증번호</S.Label>
           <S.ConFirmInput
             {...register("authNumber", {
@@ -207,8 +207,8 @@ export default function JoinForm() {
             type="text"
             placeholder="메일로 받은 인증번호 입력해주세요."
             disabled={isCheckAuthNumber}
-          />
-          <S.ConfirmBtn onClick={onCheckAuthNumberHandler}>
+          /> */}
+        {/* <S.ConfirmBtn onClick={onCheckAuthNumberHandler}>
             {isCheckAuthNumber ? "인증완료" : "인증확인"}
           </S.ConfirmBtn>
         </S.InputBox>
@@ -220,9 +220,9 @@ export default function JoinForm() {
             {...register("nickname", {
               required: "*닉네임을 입력주세요.*",
             })}
-            placeholder="별명을 입력해주세요."
-          />
-        </S.InputBox>
+            placeholder="별명을 입력해주세요." */}
+        {/* /> */}
+        {/* </S.InputBox> */}
         <S.ErrorMsg>{errors?.nickname?.message}</S.ErrorMsg>
         <S.InputBox>
           <S.Label>비밀번호</S.Label>
