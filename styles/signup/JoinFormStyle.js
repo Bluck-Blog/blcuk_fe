@@ -28,14 +28,13 @@ export const Btn = styled.button`
 `;
 
 export const BtnBox = styled.div`
-  width: 90%;
+  width: 100%;
   margin: 40px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   ${media.mobile`
-  width: 100%;
   margin: 20px 0;
   `}
 `;

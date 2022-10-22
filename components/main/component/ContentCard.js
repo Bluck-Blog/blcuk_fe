@@ -51,8 +51,8 @@ export default function ContentCard({ item }) {
           <S.RightIcon>
             <S.IconBox>
               <Image
-                width={"14px"}
-                height={"14px"}
+                width={"14"}
+                height={"14"}
                 src={isDark ? WhiteCommend : BlackCommend}
                 alt="photo"
               />
